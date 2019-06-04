@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>Reload your IFrame</title>
 
   <style>
@@ -19,16 +20,15 @@
   <iframe id="iframe" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
   <script>
-    const url = new URL(location.href)
-    const load = url.searchParams.get('load')
+    const urlToLoadInTheIFrame = new URL(location.href).searchParams.get('load');
 
-    if (load) {
-      document.getElementById('iframe').src = load;
-    }
+    // load the iframe with the query parameter value
+    document.getElementById('iframe').src = urlToLoadInTheIFrame;
 
-    const REFRESH_INTERVAL = 60 * 60 * 1000; // one hour
-
-    setTimeout(location.reload, REFRESH_INTERVAL);
+    // reload the iframe every X seconds
+    setTimeout(() => {
+      document.getElementById('iframe').src.src = urlToLoadInTheIFrame;
+    }, 30000);
   </script>
 </body>
 </html>
