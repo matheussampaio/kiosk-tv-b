@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Reload your IFrame</title>
+
+  <style>
+    html, body, iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="iframe" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+  <script>
+    const url = new URL(location.href)
+    const load = url.searchParams.get('load')
+
+    if (load) {
+      document.getElementById('iframe').src = load;
+    }
+
+    const REFRESH_INTERVAL = 60 * 60 * 1000; // one hour
+
+    setTimeout(location.reload, REFRESH_INTERVAL);
+  </script>
+</body>
+</html>
