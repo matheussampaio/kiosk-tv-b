@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Reload your IFrame</title>
+  <title>Reload Google Slides</title>
 
   <style>
     html, body, iframe {
@@ -14,23 +14,41 @@
       width: 100%;
       border: 0;
       margin: 0;
+      overflow: hidden;
+    }
+    
+    * {
+      cursor: none !important;
+    }
+    
+    #frame {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
 <body>
   <iframe
     id='iframe'
-    src='https://docs.google.com/presentation/d/e/2PACX-1vQI1KZxrd9Gwzo0D8kTElGwEb-AkswU0anwyT9b1F4jrtSHz4JrQRZTBCfvvKiwcHxLvlg8NPh7f6JE/embed?start=true&loop=true&delayms=15000&rm=minimal'
+    src='https://docs.google.com/presentation/d/e/2PACX-1vR8Uiqhc363gvT5paOoU2UDlazRIk7uZzROOmC9EBNFKqYl2UJDy637B7HcG2qZmp-KxyJR7I72w3Pa/embed?start=true&loop=true&delayms=30000&rm=minimal'
     width="100%"
     height="100%"
     allowfullscreen="false"
     mozallowfullscreen="false"
     webkitallowfullscreen="false">
   </iframe>
+  
+  <div id="frame"></div>
 
   <script>
     // reload the iframe every X seconds
-    setTimeout(() => location.reload(), 60000);
+    setTimeout(() => {
+      if (navigator.onLine) {
+        document.getElementById('iframe').src = 'https://docs.google.com/presentation/d/e/2PACX-1vR8Uiqhc363gvT5paOoU2UDlazRIk7uZzROOmC9EBNFKqYl2UJDy637B7HcG2qZmp-KxyJR7I72w3Pa/embed?start=true&loop=true&delayms=30000&rm=minimal';
+      }
+    }, 10 * 60 * 1000);
   </script>
 </body>
 </html>
